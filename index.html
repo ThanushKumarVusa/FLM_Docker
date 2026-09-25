@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Porsche | Legendary Sports Cars</title>
+  <!-- Google Font & Font Awesome for clean typography and icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      line-height: 1.5;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* header / brand section */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid #2a2a2a;
+      padding-bottom: 1.5rem;
+    }
+
+    .header i {
+      font-size: 3rem;
+      color: #d4af37; /* Porsche gold accent */
+    }
+
+    .header h1 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #f5f5f5, #c0c0c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header span {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #888;
+      margin-left: auto;
+      letter-spacing: 2px;
+    }
+
+    /* car grid */
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* card styling */
+    .car-card {
+      background: #151515;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.8);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      border: 1px solid #262626;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -12px rgba(212, 175, 55, 0.25);
+      border-color: #3a3a3a;
+    }
+
+    /* image placeholder with gradient + icon (simulating a car image) */
+    .car-image {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at 30% 30%, #2b2b2b, #0e0e0e);
+      border-bottom: 1px solid #2c2c2c;
+    }
+
+    .car-image i {
+      font-size: 6rem;
+      color: #d4af37;
+      opacity: 0.9;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.7));
+      transition: transform 0.3s;
+    }
+
+    .car-card:hover .car-image i {
+      transform: scale(1.07);
+    }
+
+    /* subtle "porsche" text on image background */
+    .car-image::after {
+      content: "PORSCHE";
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: rgba(212, 175, 55, 0.25);
+      text-transform: uppercase;
+    }
+
+    /* car details */
+    .car-info {
+      padding: 1.5rem 1.3rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .car-info h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+
+    .car-info .badge {
+      display: inline-block;
+      background: #d4af37;
+      color: #0b0b0b;
+      font-weight: 700;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-bottom: 0.8rem;
+    }
+
+    .car-specs {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0 1.2rem;
+      font-size: 0.95rem;
+      color: #bbb;
+      border-top: 1px solid #262626;
+      padding-top: 1rem;
+    }
+
+    .car-specs i {
+      color: #d4af37;
+      width: 1.2rem;
+      margin-right: 0.3rem;
+    }
+
+    .car-specs .spec-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .description {
+      color: #9a9a9a;
+      font-size: 0.9rem;
+      margin-bottom: 1.3rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1.5px solid #d4af37;
+      color: #d4af37;
+      font-weight: 600;
+      padding: 0.7rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      letter-spacing: 0.5px;
+      align-self: flex-start;
+    }
+
+    .btn i {
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #d4af37;
+      color: #0b0b0b;
+      border-color: #d4af37;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn:hover i {
+      transform: translateX(3px);
+    }
+
+    /* footer */
+    .footer-note {
+      margin-top: 3.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #5a5a5a;
+      border-top: 1px solid #222;
+      padding-top: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .footer-note i {
+      color: #d4af37;
+      margin: 0 0.2rem;
+    }
+
+    /* responsiveness */
+    @media (max-width: 650px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .header h1 {
+        font-size: 1.7rem;
+      }
+      .header i {
+        font-size: 2.2rem;
+      }
+      .header span {
+        display: none;
+      }
+      .car-image {
+        height: 170px;
+      }
+      .car-image i {
+        font-size: 4.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header section with Porsche branding -->
+    <div class="header">
+      <i class="fas fa-car-side"></i>
+      <h1>Porsche</h1>
+      <span>Timeless Performance</span>
+    </div>
+
+    <!-- Car showcase grid -->
+    <div class="car-grid">
+      
+      <!-- Car 1: 911 GT3 RS -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Track Focused</span>
+          <h2>911 GT3 RS</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 518 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 3.2s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 296 km/h</div>
+          </div>
+          <p class="description">Naturally aspirated 4.0L flat-six, active aerodynamics, and a chassis tuned for the apex.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Car 2: Taycan Turbo S -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-bolt"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Electric</span>
+          <h2>Taycan Turbo S</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 750 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 2.8s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 260 km/h</div>
+          </div>
+          <p class="description">800-volt architecture, dual motors, and instant torque — the future of Porsche performance.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Car 3: 718 Cayman GT4 -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-caravan"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Mid-Engine</span>
+          <h2>718 Cayman GT4</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 414 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 4.2s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 304 km/h</div>
+          </div>
+          <p class="description">Perfectly balanced chassis, 4.0L naturally aspirated engine, and razor-sharp handling.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Car 4: Panamera Turbo S -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-car-side"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Luxury Sedan</span>
+          <h2>Panamera Turbo S</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 620 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 3.1s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 315 km/h</div>
+          </div>
+          <p class="description">Four-door grand tourer with twin-turbo V8 and rear-axle steering — pure luxury meets speed.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Car 5: 911 Turbo S (iconic) -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Icon</span>
+          <h2>911 Turbo S</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 640 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 2.7s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 330 km/h</div>
+          </div>
+          <p class="description">The benchmark for everyday supercars — blistering acceleration and all-weather confidence.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Car 6: 918 Spyder (legendary hybrid) -->
+      <div class="car-card">
+        <div class="car-image">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="car-info">
+          <span class="badge">Hybrid Hypercar</span>
+          <h2>918 Spyder</h2>
+          <div class="car-specs">
+            <div class="spec-item"><i class="fas fa-tachometer-alt"></i> 887 hp</div>
+            <div class="spec-item"><i class="fas fa-stopwatch"></i> 2.6s</div>
+            <div class="spec-item"><i class="fas fa-bolt"></i> 345 km/h</div>
+          </div>
+          <p class="description">V8 + electric motors, Nürburgring record holder, and a future classic. Raw Porsche innovation.</p>
+          <a href="#" class="btn">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-note">
+      <i class="fas fa-crown"></i> Porsche — There is no substitute. <i class="fas fa-crown"></i>
+    </div>
+  </div>
+</body>
+</html>
